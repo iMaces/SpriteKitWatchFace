@@ -86,9 +86,9 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 
 		self.theme = [[NSUserDefaults standardUserDefaults] integerForKey:@"Theme"];
 		self.useBackgroundImageOverlay = NO;
-		self.faceStyle = FaceStyleRound;
+		self.faceStyle = FaceStyleRectangular;
 		self.numeralStyle = NumeralStyleAll;
-		self.tickmarkStyle = TickmarkStyleAll;
+		self.tickmarkStyle = TickmarkStyleStackMajor;
 		self.majorTickmarkShape = TickmarkShapeRectangular;
 		self.minorTickmarkShape = TickmarkShapeRectangular;
 		
@@ -98,7 +98,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		self.colorRegionStyle = ColorRegionStyleDynamicDuo;
 		
 		self.dateStyle = DateStyleDayDate;
-		self.dateQuadrant = DateQuadrantRight;
+		self.dateQuadrant = DateQuadrantBottom;
 		
 		[self refreshTheme];
 		
@@ -563,8 +563,8 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		{
 			colorRegionColor = [SKColor colorWithRed:0.848 green:0.187 blue:0.349 alpha:1];
 			faceBackgroundColor = [SKColor colorWithRed:0.387 green:0.226 blue:0.270 alpha:1];
-			majorMarkColor = [SKColor colorWithRed:0.831 green:0.540 blue:0.612 alpha:1];
-			minorMarkColor = majorMarkColor;
+            majorMarkColor = [SKColor colorWithRed:0.831 green:0.540 blue:0.612 alpha:1];
+            minorMarkColor = [SKColor colorWithRed:0.831 green:0.540 blue:0.612 alpha:0.5];
 			inlayColor = colorRegionColor;
 			handColor = [SKColor whiteColor];
 			textColor = [SKColor whiteColor];
@@ -576,14 +576,39 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			colorRegionColor = [SKColor colorWithRed:0.892 green:0.825 blue:0.745 alpha:1.000];
 			faceBackgroundColor = [SKColor colorWithRed:0.118 green:0.188 blue:0.239 alpha:1.000];
 			inlayColor = [SKColor colorWithRed:1.000 green:0.450 blue:0.136 alpha:1.000];
-			majorMarkColor = [inlayColor colorWithAlphaComponent:0.5];
-			minorMarkColor = majorMarkColor;
+            majorMarkColor = [inlayColor colorWithAlphaComponent:0.5];
+            minorMarkColor = [inlayColor colorWithAlphaComponent:0.25];
 			handColor = [SKColor whiteColor];
 			textColor = inlayColor;
 			secondHandColor = majorMarkColor;
 			break;
+            
 		}
-		case ThemeNavy:
+        case ThemeHermesBlack_R:
+        {
+            colorRegionColor = [SKColor blackColor];
+            faceBackgroundColor = colorRegionColor;
+            inlayColor = [SKColor blackColor];
+            majorMarkColor = colorRegionColor;
+            minorMarkColor = colorRegionColor;
+            handColor = [SKColor colorWithRed:0.956 green:0.137 blue:0.294 alpha:1.000];
+            textColor = [SKColor colorWithRed:0.937 green:0.925 blue:0.871 alpha:1.000];
+            secondHandColor = handColor;
+            break;
+        }
+        case ThemeHermesBlack_W:
+        {
+            colorRegionColor = [SKColor blackColor];
+            faceBackgroundColor = colorRegionColor;
+            inlayColor = [SKColor blackColor];
+            majorMarkColor = colorRegionColor;
+            minorMarkColor = colorRegionColor;
+            handColor = [SKColor colorWithRed:0.937 green:0.925 blue:0.871 alpha:1.000];
+            textColor = [SKColor colorWithRed:0.937 green:0.925 blue:0.871 alpha:1.000];
+            secondHandColor = handColor;
+            break;
+        }
+        case ThemeNavy:
 		{
 			colorRegionColor = [SKColor colorWithRed:0.067 green:0.471 blue:0.651 alpha:1.000];
 			faceBackgroundColor = [SKColor colorWithRed:0.118 green:0.188 blue:0.239 alpha:1.000];

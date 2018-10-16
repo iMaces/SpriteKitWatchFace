@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef enum : NSUInteger {
 	ThemeHermesPink,
 	ThemeHermesOrange,
+    ThemeHermesBlack_R,
+    ThemeHermesBlack_W,
 	ThemeNavy,
 	ThemeTidepod,
 	ThemeBretonnia,
