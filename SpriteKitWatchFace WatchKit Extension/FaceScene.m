@@ -88,7 +88,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		self.useBackgroundImageOverlay = NO;
 		self.faceStyle = FaceStyleRectangular;
 		self.numeralStyle = NumeralStyleAll;
-		self.tickmarkStyle = TickmarkStyleStackMajor;
+		self.tickmarkStyle = TickmarkStyleNone;
 		self.majorTickmarkShape = TickmarkShapeRectangular;
 		self.minorTickmarkShape = TickmarkShapeRectangular;
 		
@@ -98,13 +98,9 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		self.colorRegionStyle = ColorRegionStyleDynamicDuo;
 		
 		self.dateStyle = DateStyleDayDate;
-<<<<<<< HEAD
 		self.dateQuadrant = DateQuadrantBottom;
-=======
-		self.dateQuadrant = DateQuadrantRight;
 
-		self.monogram = @""; // e.g. 
->>>>>>> f5e05e7a2122afe3354bf7f74c33d2cda3a6c32c
+		self.monogram = @""; // e.g. 
 		
 		[self refreshTheme];
 		
@@ -301,7 +297,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
     
     if (self.monogram)
     {
-        [faceMarkings addChild:[self setupMonogramWithFontSize:16 verticalOffset:24]];
+        [faceMarkings addChild:[self setupMonogramWithFontSize:18 verticalOffset:24]];
     }
 
 	[self addChild:faceMarkings];
@@ -541,7 +537,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			[df setDateFormat:@"ccc d"];
 		}
 		
-		CGFloat dateFontSize = 12;
+		CGFloat dateFontSize = 14;
 		
 		NSDictionary *attribs = @{NSFontAttributeName : [[NSFont systemFontOfSize:dateFontSize weight:NSFontWeightMedium] smallCaps], NSForegroundColorAttributeName : self.textColor};
 		
@@ -637,6 +633,18 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
             secondHandColor = handColor;
             break;
         }
+        case ThemeHermesBlack_O:
+        {
+            colorRegionColor = [SKColor blackColor];
+            faceBackgroundColor = colorRegionColor;
+            inlayColor = [SKColor blackColor];
+            majorMarkColor = colorRegionColor;
+            minorMarkColor = colorRegionColor;
+            handColor = [SKColor colorWithRed:0.937 green:0.925 blue:0.871 alpha:1.000];
+            textColor = [SKColor colorWithRed:1.000 green:0.450 blue:0.136 alpha:1.000];
+            secondHandColor = handColor;
+            break;
+        }
         case ThemeNavy:
 		{
 			colorRegionColor = [SKColor colorWithRed:0.067 green:0.471 blue:0.651 alpha:1.000];
@@ -673,30 +681,6 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			secondHandColor = majorMarkColor;
 			break;
 		}
-		case ThemeNoir:
-		{
-			colorRegionColor = [SKColor colorWithWhite:0.3 alpha:1.0];
-			faceBackgroundColor = [SKColor blackColor];
-			inlayColor = faceBackgroundColor;
-			majorMarkColor = [SKColor whiteColor];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor whiteColor];
-			textColor = [SKColor whiteColor];
-			secondHandColor = majorMarkColor;
-			break;
-		}
-		case ThemeContrast:
-		{
-			colorRegionColor = [SKColor whiteColor];
-			faceBackgroundColor = [SKColor whiteColor];
-			inlayColor = [SKColor whiteColor];
-			majorMarkColor = [SKColor blackColor];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor blackColor];
-			textColor = [SKColor blackColor];
-			secondHandColor = majorMarkColor;
-			break;
-		}
 		case ThemeVictoire:
 		{
 			colorRegionColor = [SKColor colorWithRed:0.749 green:0.291 blue:0.319 alpha:1.000];
@@ -707,54 +691,6 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			handColor = majorMarkColor;
 			textColor = majorMarkColor;
 			secondHandColor = [SKColor colorWithRed:0.949 green:0.491 blue:0.619 alpha:1.000];
-			break;
-		}
-		case ThemeLiquid:
-		{
-			colorRegionColor = [SKColor colorWithWhite:0.2 alpha:1.0];
-			faceBackgroundColor = colorRegionColor;
-			inlayColor = [SKColor colorWithWhite:0.3 alpha:1.0];
-			majorMarkColor = [SKColor colorWithWhite:0.5 alpha:1.0];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor whiteColor];
-			textColor = [SKColor whiteColor];
-			secondHandColor = majorMarkColor;
-			break;
-		}
-		case ThemeAngler:
-		{
-			colorRegionColor = [SKColor blackColor];
-			faceBackgroundColor = [SKColor blackColor];
-			inlayColor = [SKColor colorWithRed:0.180 green:0.800 blue:0.482 alpha:1.000];
-			majorMarkColor = inlayColor;
-			minorMarkColor = majorMarkColor;
-			handColor = [inlayColor colorWithAlphaComponent:0.4];
-			textColor = inlayColor;
-			secondHandColor = majorMarkColor;
-			break;
-		}
-		case ThemeSculley:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.180 green:0.800 blue:0.482 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithRed:0.180 green:0.600 blue:0.282 alpha:1.000];
-			inlayColor = [SKColor colorWithRed:0.180 green:0.800 blue:0.482 alpha:1.000];
-			majorMarkColor = [SKColor colorWithRed:0.080 green:0.300 blue:0.082 alpha:1.000];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor colorWithRed:0.080 green:0.300 blue:0.082 alpha:1.000];
-			textColor = [SKColor colorWithRed:0.080 green:0.300 blue:0.082 alpha:1.000];
-			secondHandColor = majorMarkColor;
-			break;
-		}
-		case ThemeKitty:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.447 green:0.788 blue:0.796 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithRed:0.459 green:0.471 blue:0.706 alpha:1.000];
-			inlayColor = colorRegionColor;
-			majorMarkColor = [SKColor colorWithRed:0.259 green:0.271 blue:0.506 alpha:1.000];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor colorWithWhite:0.9 alpha:1];
-			textColor = [SKColor colorWithRed:0.159 green:0.171 blue:0.406 alpha:1.000];
-			secondHandColor = [SKColor colorWithRed:0.976 green:0.498 blue:0.439 alpha:1.000];
 			break;
 		}
 		case ThemeDelay:
@@ -789,18 +725,6 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			majorMarkColor = [SKColor colorWithRed:0.804 green:0.710 blue:0.639 alpha:1.000];
 			minorMarkColor = majorMarkColor;
 			handColor = majorMarkColor;
-			textColor = handColor;
-			secondHandColor = inlayColor;
-			break;
-		}
-		case ThemeSage:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.357 green:0.678 blue:0.600 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithRed:0.264 green:0.346 blue:0.321 alpha:1.000];
-			inlayColor = colorRegionColor;
-			majorMarkColor = [SKColor colorWithRed:0.607 green:0.754 blue:0.718 alpha:1.000];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor whiteColor];
 			textColor = handColor;
 			secondHandColor = inlayColor;
 			break;
@@ -859,42 +783,6 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			self.useMasking = YES;
 			break;
 		}
-		case ThemePawn:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.196 green:0.329 blue:0.275 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithRed:0.846 green:0.847 blue:0.757 alpha:1.000];
-			inlayColor = colorRegionColor;
-			majorMarkColor = [SKColor colorWithRed:0.365 green:0.580 blue:0.506 alpha:1.000];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor whiteColor];
-			textColor = [SKColor colorWithWhite:1.0 alpha:1];
-			secondHandColor = [SKColor colorWithRed:0.912 green:0.198 blue:0.410 alpha:1.000];
-			
-			alternateTextColor = colorRegionColor;
-			alternateMinorMarkColor = colorRegionColor;
-			alternateMajorMarkColor = colorRegionColor;
-			
-			self.useMasking = YES;
-			break;
-		}
-		case ThemeRoyal:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.118 green:0.188 blue:0.239 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithWhite:0.9 alpha:1.0];
-			inlayColor = colorRegionColor;
-			majorMarkColor = [SKColor colorWithRed:0.318 green:0.388 blue:0.539 alpha:1.000];
-			minorMarkColor = majorMarkColor;
-			handColor = [SKColor whiteColor];
-			textColor = [SKColor colorWithWhite:0.9 alpha:1];
-			secondHandColor = [SKColor colorWithRed:0.912 green:0.198 blue:0.410 alpha:1.000];
-			
-			alternateTextColor = [SKColor colorWithRed:0.218 green:0.288 blue:0.439 alpha:1.000];
-			alternateMinorMarkColor = alternateTextColor;
-			alternateMajorMarkColor = alternateTextColor;
-			
-			self.useMasking = YES;
-			break;
-		}
 		case ThemeMarques:
 		{
 			colorRegionColor = [SKColor colorWithRed:0.886 green:0.141 blue:0.196 alpha:1.000];
@@ -909,42 +797,6 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			alternateTextColor = textColor;
 			alternateMinorMarkColor = [colorRegionColor colorWithAlphaComponent:0.5];
 			alternateMajorMarkColor = [SKColor colorWithWhite:1 alpha:0.8];
-			
-			self.useMasking = YES;
-			break;
-		}
-		case ThemeVox:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.914 green:0.086 blue:0.549 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithRed:0.224 green:0.204 blue:0.565 alpha:1.000];
-			inlayColor = faceBackgroundColor;
-			majorMarkColor = [SKColor colorWithRed:0.324 green:0.304 blue:0.665 alpha:1.000];
-			minorMarkColor = [SKColor colorWithWhite:0.831 alpha:0.5];
-			handColor = [SKColor whiteColor];
-			textColor = [SKColor colorWithWhite:1 alpha:1.000];
-			secondHandColor = [SKColor colorWithRed:0.914 green:0.486 blue:0.949 alpha:1.000];
-			
-			alternateTextColor = [SKColor colorWithWhite:1 alpha:1.000];
-			alternateMinorMarkColor = [SKColor colorWithWhite:0.831 alpha:0.5];
-			alternateMajorMarkColor = [SKColor colorWithRed:0.914 green:0.086 blue:0.549 alpha:1.000];
-			
-			self.useMasking = YES;
-			break;
-		}
-		case ThemeSummer:
-		{
-			colorRegionColor = [SKColor colorWithRed:0.969 green:0.796 blue:0.204 alpha:1.000];
-			faceBackgroundColor = [SKColor colorWithRed:0.949 green:0.482 blue:0.188 alpha:1.000];
-			inlayColor = faceBackgroundColor;
-			majorMarkColor = [SKColor whiteColor];
-			minorMarkColor = [SKColor colorWithRed:0.267 green:0.278 blue:0.271 alpha:0.3];
-			handColor = [SKColor colorWithRed:0.467 green:0.478 blue:0.471 alpha:1.000];
-			textColor = [SKColor colorWithRed:0.949 green:0.482 blue:0.188 alpha:1.000];
-			secondHandColor = [SKColor colorWithRed:0.649 green:0.282 blue:0.188 alpha:1.000];
-			
-			alternateTextColor = [SKColor whiteColor];
-			alternateMinorMarkColor = minorMarkColor;
-			alternateMajorMarkColor = majorMarkColor;
 			
 			self.useMasking = YES;
 			break;
