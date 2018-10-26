@@ -297,7 +297,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
     
     if (self.monogram)
     {
-        [faceMarkings addChild:[self setupMonogramWithFontSize:18 verticalOffset:24]];
+        [faceMarkings addChild:[self setupMonogramWithFontSize:26 verticalOffset:24]];
     }
 
 	[self addChild:faceMarkings];
@@ -307,8 +307,8 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 -(void)setupTickmarksForRectangularFaceWithLayerName:(NSString *)layerName
 {
 	CGFloat margin = 5.0;
-	CGFloat labelYMargin = 30.0;
-	CGFloat labelXMargin = 24.0;
+	CGFloat labelYMargin = 20.0;
+	CGFloat labelXMargin = 14.0;
 	
 	SKCropNode *faceMarkings = [SKCropNode node];
 	faceMarkings.name = layerName;
@@ -491,7 +491,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		NSAttributedString *labelText = [[NSAttributedString alloc] initWithString:[[df stringFromDate:[NSDate date]] uppercaseString] attributes:attribs];
 		
 		SKLabelNode *numberLabel = [SKLabelNode labelNodeWithAttributedText:labelText];
-		numberLabel.name = @"Date";
+		numberLabel.name =  @"Date";
 		CGFloat numeralDelta = 0.0;
 		
 		if (self.numeralStyle == NumeralStyleNone)
@@ -511,7 +511,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
     
     if (self.monogram)
     {
-        [faceMarkings addChild:[self setupMonogramWithFontSize:18 verticalOffset:32]];
+        [faceMarkings addChild:[self setupMonogramWithFontSize:22 verticalOffset:32]];
     }
 	
 	[self addChild:faceMarkings];
@@ -537,7 +537,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			[df setDateFormat:@"ccc d"];
 		}
 		
-		CGFloat dateFontSize = 14;
+		CGFloat dateFontSize = 16;
 		
 		NSDictionary *attribs = @{NSFontAttributeName : [[NSFont systemFontOfSize:dateFontSize weight:NSFontWeightMedium] smallCaps], NSForegroundColorAttributeName : self.textColor};
 		
